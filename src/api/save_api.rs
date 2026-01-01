@@ -168,6 +168,13 @@ impl SaveApi {
         self.raw.user_data_10.profile_summary.active_profiles
     }
 
+    /// Get the map ID for a character slot.
+    /// Returns [area, x, y, z] representing the player's location in the game world.
+    /// Area codes: 10=Stormveil, 11=Leyndell, 12=Underground, 14=Raya Lucaria, 60=Overworld, etc.
+    pub fn map_id(&self, index: usize) -> [u8; 4] {
+        self.raw.user_data_10.profile_summary.profiles[index].map_id
+    }
+
     pub fn import_character(
         &mut self,
         to_index: usize,
